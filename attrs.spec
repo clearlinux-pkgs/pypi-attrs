@@ -6,7 +6,7 @@
 #
 Name     : attrs
 Version  : 17.2.0
-Release  : 2
+Release  : 3
 URL      : http://pypi.debian.net/attrs/attrs-17.2.0.tar.gz
 Source0  : http://pypi.debian.net/attrs/attrs-17.2.0.tar.gz
 Source99 : http://pypi.debian.net/attrs/attrs-17.2.0.tar.gz.asc
