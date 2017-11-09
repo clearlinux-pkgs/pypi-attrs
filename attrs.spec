@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xAE2536227F69F181 (hs@ox.cx)
 #
 Name     : attrs
-Version  : 17.2.0
-Release  : 3
-URL      : http://pypi.debian.net/attrs/attrs-17.2.0.tar.gz
-Source0  : http://pypi.debian.net/attrs/attrs-17.2.0.tar.gz
-Source99 : http://pypi.debian.net/attrs/attrs-17.2.0.tar.gz.asc
+Version  : 17.3.0
+Release  : 4
+URL      : http://pypi.debian.net/attrs/attrs-17.3.0.tar.gz
+Source0  : http://pypi.debian.net/attrs/attrs-17.3.0.tar.gz
+Source99 : http://pypi.debian.net/attrs/attrs-17.3.0.tar.gz.asc
 Summary  : Classes Without Boilerplate
 Group    : Development/Tools
 License  : MIT
@@ -60,19 +60,19 @@ python3 components for the attrs package.
 
 
 %prep
-%setup -q -n attrs-17.2.0
+%setup -q -n attrs-17.3.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1507148763
+export SOURCE_DATE_EPOCH=1510234416
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1507148763
+export SOURCE_DATE_EPOCH=1510234416
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
