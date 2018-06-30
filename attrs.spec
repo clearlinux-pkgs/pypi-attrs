@@ -6,7 +6,7 @@
 #
 Name     : attrs
 Version  : 17.4.0
-Release  : 17
+Release  : 18
 URL      : http://pypi.debian.net/attrs/attrs-17.4.0.tar.gz
 Source0  : http://pypi.debian.net/attrs/attrs-17.4.0.tar.gz
 Source99 : http://pypi.debian.net/attrs/attrs-17.4.0.tar.gz.asc
@@ -25,6 +25,7 @@ BuildRequires : pluggy
 BuildRequires : py-python
 BuildRequires : pytest
 BuildRequires : python-core
+BuildRequires : python3-core
 BuildRequires : python3-dev
 BuildRequires : setuptools
 BuildRequires : setuptools-legacypython
@@ -78,12 +79,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1530323831
+export SOURCE_DATE_EPOCH=1530370087
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1530323831
+export SOURCE_DATE_EPOCH=1530370087
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/attrs
 cp LICENSE %{buildroot}/usr/share/doc/attrs/LICENSE
