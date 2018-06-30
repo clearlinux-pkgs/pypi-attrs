@@ -6,7 +6,7 @@
 #
 Name     : attrs
 Version  : 17.4.0
-Release  : 15
+Release  : 16
 URL      : http://pypi.debian.net/attrs/attrs-17.4.0.tar.gz
 Source0  : http://pypi.debian.net/attrs/attrs-17.4.0.tar.gz
 Source99 : http://pypi.debian.net/attrs/attrs-17.4.0.tar.gz.asc
@@ -14,6 +14,7 @@ Summary  : Classes Without Boilerplate
 Group    : Development/Tools
 License  : MIT
 Requires: attrs-python3
+Requires: attrs-license
 Requires: attrs-python
 Requires: Sphinx
 Requires: six
@@ -23,9 +24,10 @@ BuildRequires : pip
 BuildRequires : pluggy
 BuildRequires : py-python
 BuildRequires : pytest
-
+BuildRequires : python-core
 BuildRequires : python3-dev
 BuildRequires : setuptools
+BuildRequires : setuptools-legacypython
 BuildRequires : tox
 BuildRequires : virtualenv
 
@@ -40,6 +42,14 @@ Requires: python-core
 
 %description legacypython
 legacypython components for the attrs package.
+
+
+%package license
+Summary: license components for the attrs package.
+Group: Default
+
+%description license
+license components for the attrs package.
 
 
 %package python
@@ -68,13 +78,16 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1519399179
+export SOURCE_DATE_EPOCH=1530323831
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1519399179
+export SOURCE_DATE_EPOCH=1530323831
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/attrs
+cp LICENSE %{buildroot}/usr/share/doc/attrs/LICENSE
+cp docs/license.rst %{buildroot}/usr/share/doc/attrs/docs_license.rst
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 echo ----[ mark ]----
@@ -87,6 +100,11 @@ echo ----[ mark ]----
 %files legacypython
 %defattr(-,root,root,-)
 /usr/lib/python2*/*
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/attrs/LICENSE
+/usr/share/doc/attrs/docs_license.rst
 
 %files python
 %defattr(-,root,root,-)
