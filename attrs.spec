@@ -6,10 +6,10 @@
 #
 Name     : attrs
 Version  : 18.1.0
-Release  : 22
-URL      : https://files.pythonhosted.org/packages/e4/ac/a04671e118b57bee87dabca1e0f2d3bda816b7a551036012d0ca24190e71/attrs-18.1.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/e4/ac/a04671e118b57bee87dabca1e0f2d3bda816b7a551036012d0ca24190e71/attrs-18.1.0.tar.gz
-Source99 : https://files.pythonhosted.org/packages/e4/ac/a04671e118b57bee87dabca1e0f2d3bda816b7a551036012d0ca24190e71/attrs-18.1.0.tar.gz.asc
+Release  : 23
+URL      : http://pypi.debian.net/attrs/attrs-18.1.0.tar.gz
+Source0  : http://pypi.debian.net/attrs/attrs-18.1.0.tar.gz
+Source99 : http://pypi.debian.net/attrs/attrs-18.1.0.tar.gz.asc
 Summary  : Classes Without Boilerplate
 Group    : Development/Tools
 License  : MIT
@@ -80,12 +80,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1532241689
+export SOURCE_DATE_EPOCH=1532292555
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1532241689
+export SOURCE_DATE_EPOCH=1532292555
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/attrs
 cp LICENSE %{buildroot}/usr/share/doc/attrs/LICENSE
