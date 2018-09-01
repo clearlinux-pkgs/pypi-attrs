@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xAE2536227F69F181 (hs@ox.cx)
 #
 Name     : attrs
-Version  : 18.1.0
-Release  : 23
-URL      : http://pypi.debian.net/attrs/attrs-18.1.0.tar.gz
-Source0  : http://pypi.debian.net/attrs/attrs-18.1.0.tar.gz
-Source99 : http://pypi.debian.net/attrs/attrs-18.1.0.tar.gz.asc
+Version  : 18.2.0
+Release  : 24
+URL      : https://files.pythonhosted.org/packages/0f/9e/26b1d194aab960063b266170e53c39f73ea0d0d3f5ce23313e0ec8ee9bdf/attrs-18.2.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/0f/9e/26b1d194aab960063b266170e53c39f73ea0d0d3f5ce23313e0ec8ee9bdf/attrs-18.2.0.tar.gz
+Source99 : https://files.pythonhosted.org/packages/0f/9e/26b1d194aab960063b266170e53c39f73ea0d0d3f5ce23313e0ec8ee9bdf/attrs-18.2.0.tar.gz.asc
 Summary  : Classes Without Boilerplate
 Group    : Development/Tools
 License  : MIT
@@ -19,22 +19,18 @@ Requires: attrs-python
 Requires: Sphinx
 Requires: six
 Requires: zope.interface
+BuildRequires : buildreq-distutils23
 BuildRequires : buildreq-distutils3
-BuildRequires : pbr
-BuildRequires : pip
 BuildRequires : pluggy
 BuildRequires : py-python
 BuildRequires : pytest
 BuildRequires : python-core
-BuildRequires : python3-core
-BuildRequires : python3-dev
-BuildRequires : setuptools
 BuildRequires : setuptools-legacypython
 BuildRequires : tox
 BuildRequires : virtualenv
 
 %description
-.. image:: http://www.attrs.org/en/latest/_static/attrs_logo.png
+.. image:: https://www.attrs.org/en/latest/_static/attrs_logo.png
 :alt: attrs Logo
 
 %package legacypython
@@ -73,19 +69,19 @@ python3 components for the attrs package.
 
 
 %prep
-%setup -q -n attrs-18.1.0
+%setup -q -n attrs-18.2.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1532292555
+export SOURCE_DATE_EPOCH=1535814288
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1532292555
+export SOURCE_DATE_EPOCH=1535814288
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/attrs
 cp LICENSE %{buildroot}/usr/share/doc/attrs/LICENSE
