@@ -6,7 +6,7 @@
 #
 Name     : attrs
 Version  : 18.2.0
-Release  : 28
+Release  : 29
 URL      : https://files.pythonhosted.org/packages/0f/9e/26b1d194aab960063b266170e53c39f73ea0d0d3f5ce23313e0ec8ee9bdf/attrs-18.2.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/0f/9e/26b1d194aab960063b266170e53c39f73ea0d0d3f5ce23313e0ec8ee9bdf/attrs-18.2.0.tar.gz
 Source99 : https://files.pythonhosted.org/packages/0f/9e/26b1d194aab960063b266170e53c39f73ea0d0d3f5ce23313e0ec8ee9bdf/attrs-18.2.0.tar.gz.asc
@@ -73,12 +73,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1541264326
+export SOURCE_DATE_EPOCH=1541265304
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1541264326
+export SOURCE_DATE_EPOCH=1541265304
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/attrs
 cp LICENSE %{buildroot}/usr/share/package-licenses/attrs/LICENSE
