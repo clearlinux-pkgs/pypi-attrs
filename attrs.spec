@@ -6,19 +6,16 @@
 #
 Name     : attrs
 Version  : 18.2.0
-Release  : 27
+Release  : 28
 URL      : https://files.pythonhosted.org/packages/0f/9e/26b1d194aab960063b266170e53c39f73ea0d0d3f5ce23313e0ec8ee9bdf/attrs-18.2.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/0f/9e/26b1d194aab960063b266170e53c39f73ea0d0d3f5ce23313e0ec8ee9bdf/attrs-18.2.0.tar.gz
 Source99 : https://files.pythonhosted.org/packages/0f/9e/26b1d194aab960063b266170e53c39f73ea0d0d3f5ce23313e0ec8ee9bdf/attrs-18.2.0.tar.gz.asc
 Summary  : Classes Without Boilerplate
 Group    : Development/Tools
 License  : MIT
-Requires: attrs-python3
-Requires: attrs-license
-Requires: attrs-python
-Requires: Sphinx
-Requires: six
-Requires: zope.interface
+Requires: attrs-license = %{version}-%{release}
+Requires: attrs-python = %{version}-%{release}
+Requires: attrs-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils23
 BuildRequires : buildreq-distutils3
 BuildRequires : pluggy
@@ -53,7 +50,7 @@ license components for the attrs package.
 %package python
 Summary: python components for the attrs package.
 Group: Default
-Requires: attrs-python3
+Requires: attrs-python3 = %{version}-%{release}
 
 %description python
 python components for the attrs package.
@@ -76,16 +73,16 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1537237686
+export SOURCE_DATE_EPOCH=1541264326
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1537237686
+export SOURCE_DATE_EPOCH=1541264326
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/attrs
-cp LICENSE %{buildroot}/usr/share/doc/attrs/LICENSE
-cp docs/license.rst %{buildroot}/usr/share/doc/attrs/docs_license.rst
+mkdir -p %{buildroot}/usr/share/package-licenses/attrs
+cp LICENSE %{buildroot}/usr/share/package-licenses/attrs/LICENSE
+cp docs/license.rst %{buildroot}/usr/share/package-licenses/attrs/docs_license.rst
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 echo ----[ mark ]----
@@ -100,9 +97,9 @@ echo ----[ mark ]----
 /usr/lib/python2*/*
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/attrs/LICENSE
-/usr/share/doc/attrs/docs_license.rst
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/attrs/LICENSE
+/usr/share/package-licenses/attrs/docs_license.rst
 
 %files python
 %defattr(-,root,root,-)
