@@ -6,7 +6,7 @@
 #
 Name     : attrs
 Version  : 18.2.0
-Release  : 31
+Release  : 32
 URL      : https://files.pythonhosted.org/packages/0f/9e/26b1d194aab960063b266170e53c39f73ea0d0d3f5ce23313e0ec8ee9bdf/attrs-18.2.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/0f/9e/26b1d194aab960063b266170e53c39f73ea0d0d3f5ce23313e0ec8ee9bdf/attrs-18.2.0.tar.gz
 Source99 : https://files.pythonhosted.org/packages/0f/9e/26b1d194aab960063b266170e53c39f73ea0d0d3f5ce23313e0ec8ee9bdf/attrs-18.2.0.tar.gz.asc
@@ -16,7 +16,6 @@ License  : MIT
 Requires: attrs-license = %{version}-%{release}
 Requires: attrs-python = %{version}-%{release}
 Requires: attrs-python3 = %{version}-%{release}
-BuildRequires : buildreq-distutils23
 BuildRequires : buildreq-distutils3
 BuildRequires : pluggy
 BuildRequires : py-python
@@ -29,15 +28,6 @@ BuildRequires : virtualenv
 %description
 .. image:: https://www.attrs.org/en/latest/_static/attrs_logo.png
 :alt: attrs Logo
-
-%package legacypython
-Summary: legacypython components for the attrs package.
-Group: Default
-Requires: python-core
-
-%description legacypython
-legacypython components for the attrs package.
-
 
 %package license
 Summary: license components for the attrs package.
@@ -73,28 +63,23 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1541265304
-python2 setup.py build -b py2
-python3 setup.py build -b py3
+export SOURCE_DATE_EPOCH=1554305569
+export MAKEFLAGS=%{?_smp_mflags}
+python3 setup.py build
 
 %install
-export SOURCE_DATE_EPOCH=1541265304
+export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/attrs
 cp LICENSE %{buildroot}/usr/share/package-licenses/attrs/LICENSE
 cp docs/license.rst %{buildroot}/usr/share/package-licenses/attrs/docs_license.rst
-python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
-python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
-
-%files legacypython
-%defattr(-,root,root,-)
-/usr/lib/python2*/*
 
 %files license
 %defattr(0644,root,root,0755)
