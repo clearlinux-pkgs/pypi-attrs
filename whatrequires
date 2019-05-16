@@ -1,5 +1,8 @@
 # This file contains recursive sources that require this package
 aiohttp
+deprecated-hypothesis
 eternalegypt
 hypothesis
+pytest
 python-zeep
+python-zstandard
