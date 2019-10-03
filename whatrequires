@@ -1,8 +1,14 @@
 # This file contains recursive sources that require this package
 aiohttp
+ceph
+cmd2
+conda
 deprecated-hypothesis
 eternalegypt
 hypothesis
+jsonschema
+mxnet
+packaging
 pytest
 python-zeep
 python-zstandard
