@@ -3,7 +3,6 @@ aiohttp
 ceph
 cmd2
 conda
-deprecated-hypothesis
 eternalegypt
 hypothesis
 jsonschema
