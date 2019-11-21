@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xAE2536227F69F181 (hs@ox.cx)
 #
 Name     : attrs
-Version  : 19.2.0
-Release  : 38
-URL      : https://files.pythonhosted.org/packages/bd/69/2833f182ea95ea1f17e9a7559b8b92ebfdf4f68b5c58b15bc10f47bc2e01/attrs-19.2.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/bd/69/2833f182ea95ea1f17e9a7559b8b92ebfdf4f68b5c58b15bc10f47bc2e01/attrs-19.2.0.tar.gz
-Source1 : https://files.pythonhosted.org/packages/bd/69/2833f182ea95ea1f17e9a7559b8b92ebfdf4f68b5c58b15bc10f47bc2e01/attrs-19.2.0.tar.gz.asc
+Version  : 19.3.0
+Release  : 39
+URL      : https://files.pythonhosted.org/packages/98/c3/2c227e66b5e896e15ccdae2e00bbc69aa46e9a8ce8869cc5fa96310bf612/attrs-19.3.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/98/c3/2c227e66b5e896e15ccdae2e00bbc69aa46e9a8ce8869cc5fa96310bf612/attrs-19.3.0.tar.gz
+Source1 : https://files.pythonhosted.org/packages/98/c3/2c227e66b5e896e15ccdae2e00bbc69aa46e9a8ce8869cc5fa96310bf612/attrs-19.3.0.tar.gz.asc
 Summary  : Classes Without Boilerplate
 Group    : Development/Tools
 License  : MIT
@@ -58,14 +58,16 @@ python3 components for the attrs package.
 
 
 %prep
-%setup -q -n attrs-19.2.0
+%setup -q -n attrs-19.3.0
+cd %{_builddir}/attrs-19.3.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570660766
+export SOURCE_DATE_EPOCH=1574351188
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -78,8 +80,8 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/attrs
-cp LICENSE %{buildroot}/usr/share/package-licenses/attrs/LICENSE
-cp docs/license.rst %{buildroot}/usr/share/package-licenses/attrs/docs_license.rst
+cp %{_builddir}/attrs-19.3.0/LICENSE %{buildroot}/usr/share/package-licenses/attrs/00ff890e8493d10b07d5d3fafa23639bb071e443
+cp %{_builddir}/attrs-19.3.0/docs/license.rst %{buildroot}/usr/share/package-licenses/attrs/189f457bcddb4a83cda90f30f1e21a2a2d1504a3
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -90,8 +92,8 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/attrs/LICENSE
-/usr/share/package-licenses/attrs/docs_license.rst
+/usr/share/package-licenses/attrs/00ff890e8493d10b07d5d3fafa23639bb071e443
+/usr/share/package-licenses/attrs/189f457bcddb4a83cda90f30f1e21a2a2d1504a3
 
 %files python
 %defattr(-,root,root,-)

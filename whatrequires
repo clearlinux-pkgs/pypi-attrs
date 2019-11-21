@@ -1,5 +1,6 @@
 # This file contains recursive sources that require this package
 aiohttp
+amazon-efs-utils
 ceph
 cmd2
 conda
@@ -7,7 +8,6 @@ eternalegypt
 hypothesis
 jsonschema
 mxnet
-packaging
 pytest
 python-zeep
 python-zstandard
