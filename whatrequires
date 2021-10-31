@@ -1,6 +1,8 @@
 # This file contains recursive sources that require this package
 aiohttp
 amazon-efs-utils
+ansible
+bowler
 cantarell-fonts
 cmd2
 conda
