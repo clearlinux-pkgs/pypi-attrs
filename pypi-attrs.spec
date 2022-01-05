@@ -6,7 +6,7 @@
 #
 Name     : pypi-attrs
 Version  : 21.2.0
-Release  : 64
+Release  : 65
 URL      : https://files.pythonhosted.org/packages/ed/d6/3ebca4ca65157c12bd08a63e20ac0bdc21ac7f3694040711f9fd073c0ffb/attrs-21.2.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/ed/d6/3ebca4ca65157c12bd08a63e20ac0bdc21ac7f3694040711f9fd073c0ffb/attrs-21.2.0.tar.gz
 Source1  : https://files.pythonhosted.org/packages/ed/d6/3ebca4ca65157c12bd08a63e20ac0bdc21ac7f3694040711f9fd073c0ffb/attrs-21.2.0.tar.gz.asc
@@ -57,15 +57,18 @@ license components for the pypi-attrs package.
 
 
 %package python
+Provides: attrs-python
 Summary: python components for the pypi-attrs package.
 Group: Default
 Requires: pypi-attrs-python3 = %{version}-%{release}
+
 
 %description python
 python components for the pypi-attrs package.
 
 
 %package python3
+Provides: attrs-python3
 Summary: python3 components for the pypi-attrs package.
 Group: Default
 Requires: python3-core
