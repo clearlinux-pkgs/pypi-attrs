@@ -4,21 +4,23 @@
 #
 # Source0 file verified with key 0xAE2536227F69F181 (hs@ox.cx)
 #
-Name     : attrs
+Name     : pypi-attrs
 Version  : 21.2.0
-Release  : 62
+Release  : 63
 URL      : https://files.pythonhosted.org/packages/ed/d6/3ebca4ca65157c12bd08a63e20ac0bdc21ac7f3694040711f9fd073c0ffb/attrs-21.2.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/ed/d6/3ebca4ca65157c12bd08a63e20ac0bdc21ac7f3694040711f9fd073c0ffb/attrs-21.2.0.tar.gz
 Source1  : https://files.pythonhosted.org/packages/ed/d6/3ebca4ca65157c12bd08a63e20ac0bdc21ac7f3694040711f9fd073c0ffb/attrs-21.2.0.tar.gz.asc
 Summary  : Classes Without Boilerplate
 Group    : Development/Tools
 License  : MIT
-Requires: attrs-license = %{version}-%{release}
-Requires: attrs-python = %{version}-%{release}
-Requires: attrs-python3 = %{version}-%{release}
+Requires: pypi-attrs-license = %{version}-%{release}
+Requires: pypi-attrs-python = %{version}-%{release}
+Requires: pypi-attrs-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 BuildRequires : pluggy
 BuildRequires : py-python
+BuildRequires : pypi(setuptools)
+BuildRequires : pypi(wheel)
 BuildRequires : pytest
 BuildRequires : tox
 BuildRequires : virtualenv
@@ -46,30 +48,30 @@ BuildRequires : virtualenv
 </p>
 
 %package license
-Summary: license components for the attrs package.
+Summary: license components for the pypi-attrs package.
 Group: Default
 
 %description license
-license components for the attrs package.
+license components for the pypi-attrs package.
 
 
 %package python
-Summary: python components for the attrs package.
+Summary: python components for the pypi-attrs package.
 Group: Default
-Requires: attrs-python3 = %{version}-%{release}
+Requires: pypi-attrs-python3 = %{version}-%{release}
 
 %description python
-python components for the attrs package.
+python components for the pypi-attrs package.
 
 
 %package python3
-Summary: python3 components for the attrs package.
+Summary: python3 components for the pypi-attrs package.
 Group: Default
 Requires: python3-core
 Provides: pypi(attrs)
 
 %description python3
-python3 components for the attrs package.
+python3 components for the pypi-attrs package.
 
 
 %prep
@@ -81,21 +83,21 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1635704860
+export SOURCE_DATE_EPOCH=1641410625
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
 export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
-python3 setup.py build
+python3 -m build --wheel --skip-dependency-check --no-isolation
 
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/package-licenses/attrs
-cp %{_builddir}/attrs-21.2.0/LICENSE %{buildroot}/usr/share/package-licenses/attrs/00ff890e8493d10b07d5d3fafa23639bb071e443
-python3 -tt setup.py build  install --root=%{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/pypi-attrs
+cp %{_builddir}/attrs-21.2.0/LICENSE %{buildroot}/usr/share/package-licenses/pypi-attrs/00ff890e8493d10b07d5d3fafa23639bb071e443
+pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -105,7 +107,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/attrs/00ff890e8493d10b07d5d3fafa23639bb071e443
+/usr/share/package-licenses/pypi-attrs/00ff890e8493d10b07d5d3fafa23639bb071e443
 
 %files python
 %defattr(-,root,root,-)
