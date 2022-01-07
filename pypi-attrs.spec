@@ -17,13 +17,13 @@ Requires: pypi-attrs-license = %{version}-%{release}
 Requires: pypi-attrs-python = %{version}-%{release}
 Requires: pypi-attrs-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
-BuildRequires : pluggy
+BuildRequires : pypi(pluggy)
 BuildRequires : py-python
 BuildRequires : pypi(setuptools)
 BuildRequires : pypi(wheel)
 BuildRequires : pytest
 BuildRequires : tox
-BuildRequires : virtualenv
+BuildRequires : pypi(virtualenv)
 Provides: attrs
 
 %description
