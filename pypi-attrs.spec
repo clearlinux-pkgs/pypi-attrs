@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xAE2536227F69F181 (hs@ox.cx)
 #
 Name     : pypi-attrs
-Version  : 21.2.0
-Release  : 66
-URL      : https://files.pythonhosted.org/packages/ed/d6/3ebca4ca65157c12bd08a63e20ac0bdc21ac7f3694040711f9fd073c0ffb/attrs-21.2.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/ed/d6/3ebca4ca65157c12bd08a63e20ac0bdc21ac7f3694040711f9fd073c0ffb/attrs-21.2.0.tar.gz
-Source1  : https://files.pythonhosted.org/packages/ed/d6/3ebca4ca65157c12bd08a63e20ac0bdc21ac7f3694040711f9fd073c0ffb/attrs-21.2.0.tar.gz.asc
+Version  : 21.4.0
+Release  : 67
+URL      : https://files.pythonhosted.org/packages/d7/77/ebb15fc26d0f815839ecd897b919ed6d85c050feeb83e100e020df9153d2/attrs-21.4.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/d7/77/ebb15fc26d0f815839ecd897b919ed6d85c050feeb83e100e020df9153d2/attrs-21.4.0.tar.gz
+Source1  : https://files.pythonhosted.org/packages/d7/77/ebb15fc26d0f815839ecd897b919ed6d85c050feeb83e100e020df9153d2/attrs-21.4.0.tar.gz.asc
 Summary  : Classes Without Boilerplate
 Group    : Development/Tools
 License  : MIT
@@ -17,14 +17,13 @@ Requires: pypi-attrs-license = %{version}-%{release}
 Requires: pypi-attrs-python = %{version}-%{release}
 Requires: pypi-attrs-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
-BuildRequires : pypi(pluggy)
-BuildRequires : py-python
+BuildRequires : pypi(py)
 BuildRequires : pypi(setuptools)
 BuildRequires : pypi(wheel)
-BuildRequires : pytest
-BuildRequires : tox
-BuildRequires : pypi(virtualenv)
-Provides: attrs
+BuildRequires : pypi-pluggy
+BuildRequires : pypi-pytest
+BuildRequires : pypi-tox
+BuildRequires : pypi-virtualenv
 
 %description
 .. raw:: html
@@ -35,16 +34,13 @@ Provides: attrs
 </p>
 <p align="center">
 <a href="https://www.attrs.org/en/stable/?badge=stable">
-<img src="https://readthedocs.org/projects/attrs/badge/?version=stable" alt="Documentation Status" />
+<img src="https://img.shields.io/badge/Docs-Read%20The%20Docs-black" alt="Documentation" />
 </a>
-<a href="https://github.com/python-attrs/attrs/actions?workflow=CI">
-<img src="https://github.com/python-attrs/attrs/workflows/CI/badge.svg?branch=main" alt="CI Status" />
+<a href="https://github.com/python-attrs/attrs/blob/main/LICENSE">
+<img src="https://img.shields.io/badge/license-MIT-C06524" alt="License: MIT" />
 </a>
-<a href="https://codecov.io/github/python-attrs/attrs">
-<img src="https://codecov.io/github/python-attrs/attrs/branch/main/graph/badge.svg" alt="Test Coverage" />
-</a>
-<a href="https://github.com/psf/black">
-<img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code style: black" />
+<a href="https://pypi.org/project/attrs/">
+<img src="https://img.shields.io/pypi/v/attrs" />
 </a>
 </p>
 
@@ -57,18 +53,15 @@ license components for the pypi-attrs package.
 
 
 %package python
-Provides: attrs-python
 Summary: python components for the pypi-attrs package.
 Group: Default
 Requires: pypi-attrs-python3 = %{version}-%{release}
-
 
 %description python
 python components for the pypi-attrs package.
 
 
 %package python3
-Provides: attrs-python3
 Summary: python3 components for the pypi-attrs package.
 Group: Default
 Requires: python3-core
@@ -79,15 +72,15 @@ python3 components for the pypi-attrs package.
 
 
 %prep
-%setup -q -n attrs-21.2.0
-cd %{_builddir}/attrs-21.2.0
+%setup -q -n attrs-21.4.0
+cd %{_builddir}/attrs-21.4.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641410625
+export SOURCE_DATE_EPOCH=1642003244
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -100,7 +93,7 @@ python3 -m build --wheel --skip-dependency-check --no-isolation
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pypi-attrs
-cp %{_builddir}/attrs-21.2.0/LICENSE %{buildroot}/usr/share/package-licenses/pypi-attrs/00ff890e8493d10b07d5d3fafa23639bb071e443
+cp %{_builddir}/attrs-21.4.0/LICENSE %{buildroot}/usr/share/package-licenses/pypi-attrs/00ff890e8493d10b07d5d3fafa23639bb071e443
 pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
