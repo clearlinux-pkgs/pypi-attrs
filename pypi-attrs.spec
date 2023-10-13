@@ -5,7 +5,7 @@
 #
 Name     : pypi-attrs
 Version  : 23.1.0
-Release  : 82
+Release  : 83
 URL      : https://files.pythonhosted.org/packages/97/90/81f95d5f705be17872843536b1868f351805acf6971251ff07c1b8334dbb/attrs-23.1.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/97/90/81f95d5f705be17872843536b1868f351805acf6971251ff07c1b8334dbb/attrs-23.1.0.tar.gz
 Summary  : Classes Without Boilerplate
