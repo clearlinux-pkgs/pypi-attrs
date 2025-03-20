@@ -1,5 +1,5 @@
 PKG_NAME := pypi-attrs
-URL = https://files.pythonhosted.org/packages/49/7c/fdf464bcc51d23881d110abd74b512a42b3d5d376a55a831b44c603ae17f/attrs-25.1.0.tar.gz
+URL = https://files.pythonhosted.org/packages/5a/b0/1367933a8532ee6ff8d63537de4f1177af4bff9f3e829baf7331f595bb24/attrs-25.3.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
